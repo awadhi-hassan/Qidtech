@@ -18,5 +18,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    // dd(count($slideshow_photos));
     return view('dashboard');
 })->name('home');
+
+Route::get('about', function(){
+    return view('about');
+})->name('about');
+
+Route::get('contact', function(){
+    return view('contact');
+})->name('contact');

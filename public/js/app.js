@@ -5451,6 +5451,50 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+var myslide = document.querySelectorAll('.myslide'),
+    dot = document.querySelectorAll('.dot');
+var counter = 1;
+slidefun(counter);
+var timer = setInterval(autoSlide, 8000);
+
+function autoSlide() {
+  counter += 1;
+  slidefun(counter);
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  timer = setInterval(autoSlide, 8000);
+}
+
+function slidefun(n) {
+  var i;
+
+  for (i = 0; i < myslide.length; i++) {
+    myslide[i].style.display = "none";
+  }
+
+  for (i = 0; i < dot.length; i++) {
+    dot[i].className = dot[i].className.replace(' active', '');
+  }
+
+  if (n > myslide.length) {
+    counter = 1;
+  }
+
+  if (n < 1) {
+    counter = myslide.length;
+  }
+
+  myslide[counter - 1].style.display = "block";
+  dot[counter - 1].className += " active";
+}
+
+window.currentSlide = function (n) {
+  counter = n;
+  slidefun(counter);
+  resetTimer();
+};
 
 /***/ }),
 

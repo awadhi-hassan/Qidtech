@@ -21,7 +21,7 @@
     <body class="font-sans antialiased" >
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100 pt-5" style="background-image: url('{{ asset('storage/logo.png') }}')">
+        <div class="min-h-screen" style="background-color: #fffbeb">
 
             @livewire('navigation-menu')
 
